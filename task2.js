@@ -1,15 +1,15 @@
-import { files, resultPaths2 } from "./constants/index.mjs";
+import { files, resultPaths2 } from "./constants/index.js";
 
 import {
   calcRelativeFrequencies,
   calculateBiGrams,
   calculateFrequencies,
   lengths,
-} from "./utils/calculations.mjs";
+} from "./utils/calculations.js";
 
-import { readFiles, writeToCSVs } from "./utils/files.mjs";
+import { readFiles, writeToCSVs } from "./utils/files.js";
 
-import { clearText, splitOnWords } from "./utils/text-manipulations.mjs";
+import { clearText, splitOnWords } from "./utils/text-manipulations.js";
 
 const plainTexts = readFiles(files);
 const clearedTexts = clearText(plainTexts);
@@ -18,6 +18,4 @@ const biGrams = calculateBiGrams(splittedOnWords);
 const biGramFrequencies = calculateFrequencies(biGrams);
 const lens = lengths(biGrams);
 const relFrequencies = calcRelativeFrequencies(biGramFrequencies, lens);
-const results = writeToCSVs(relFrequencies, resultPaths2);
-
-console.log(results);
+export const result2 = writeToCSVs(relFrequencies, resultPaths2);

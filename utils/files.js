@@ -15,5 +15,7 @@ export const writeToCSVs = (frequencyMaps, filePaths) => {
   frequencyMaps.forEach((el, i) => writeToCSV(el, filePaths[i]));
   const csvs = readFiles(filePaths);
   const csvsLengths = csvs.map((csv) => csv.length);
-  return `Successfully wrote CSV files! \n${csvsLengths.join(" | ")}`;
+  return `Successfully wrote CSV files! \n${csvsLengths.join(
+    " | "
+  )}\n${filePaths.join("\n")}\n`;
 };
