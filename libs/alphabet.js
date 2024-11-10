@@ -4,6 +4,7 @@ import {
   calcRelativeFrequencies,
   calcFrequencies,
   lengths,
+  mergeDictionaries,
 } from "../utils/calculations.js";
 
 import { readFiles, writeToCSVs } from "../utils/files.js";
@@ -17,10 +18,11 @@ import {
 const plainTexts = readFiles(files);
 const clearedTexts = clearText(plainTexts);
 const splittedTexts = splitOnChars(clearedTexts);
-const spacelessTexts = removeSpaces(splittedTexts);
-const lens = lengths(spacelessTexts);
-const frequencies = calcFrequencies(spacelessTexts);
+//const spacelessTexts = removeSpaces(splittedTexts);
+const lens = lengths(splittedTexts);
+const frequencies = calcFrequencies(splittedTexts);
 const relativeFrequencies = calcRelativeFrequencies(frequencies, lens);
-const result1 = writeToCSVs(relativeFrequencies, resultPaths);
+const ultimate = mergeDictionaries(relativeFrequencies);
+const res = writeToCSVs(relativeFrequencies, resultPaths);
 
-export default { result1, relativeFrequencies, clearedTexts };
+export default { res, relativeFrequencies, clearedTexts, ultimate };

@@ -5,6 +5,7 @@ import {
   calcBiGrams,
   calcFrequencies,
   lengths,
+  mergeDictionaries,
 } from "../utils/calculations.js";
 
 import { generateMatrixes, readFiles, writeToCSVs } from "../utils/files.js";
@@ -18,7 +19,9 @@ const biGrams = calcBiGrams(splittedOnWords);
 const biGramFrequencies = calcFrequencies(biGrams);
 const lens = lengths(biGrams);
 const relativeFrequencies = calcRelativeFrequencies(biGramFrequencies, lens);
-const result2 = writeToCSVs(relativeFrequencies, resultPaths2);
+const ultimate = mergeDictionaries(relativeFrequencies);
+const res = writeToCSVs(relativeFrequencies, resultPaths2);
+
 generateMatrixes(relativeFrequencies, resultPaths22);
 
-export default { result2, relativeFrequencies, clearedTexts };
+export default { res, relativeFrequencies, clearedTexts, ultimate };

@@ -6,6 +6,7 @@ import {
   calcFrequencies,
   lengths,
   calcTriGrams,
+  mergeDictionaries,
 } from "../utils/calculations.js";
 
 import { readFiles, writeToCSVs } from "../utils/files.js";
@@ -19,6 +20,7 @@ const triGrams = calcTriGrams(splittedOnWords);
 const triGramFrequencies = calcFrequencies(triGrams);
 const lens = lengths(triGrams);
 const relativeFrequencies = calcRelativeFrequencies(triGramFrequencies, lens);
-const result3 = writeToCSVs(relativeFrequencies, resultPaths3);
+const ultimate = mergeDictionaries(relativeFrequencies);
+const res = writeToCSVs(relativeFrequencies, resultPaths3);
 
-export default { result3, relativeFrequencies, clearedTexts };
+export default { res, relativeFrequencies, clearedTexts, ultimate };

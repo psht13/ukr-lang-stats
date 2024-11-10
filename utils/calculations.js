@@ -15,7 +15,10 @@ export const calcRelativeFrequencies = (frequencies, lengths) => {
     el.entries().forEach(([key, el]) => {
       return relativeFrequencies.set(key, (el / lengths[i]) * 100);
     });
-    return relativeFrequencies;
+    const sortedFrequencies = new Map(
+      [...relativeFrequencies.entries()].sort()
+    );
+    return sortedFrequencies;
   });
 };
 
@@ -48,3 +51,22 @@ export const calcTriGrams = (texts) => {
 };
 
 export const lengths = (texts) => texts.map((text) => text.length);
+
+export const mergeDictionaries = (dicts) => {
+  const newDictionary = new Map();
+
+  dicts.forEach((el) => {
+    el.forEach((elem, key) => {
+      const value = newDictionary.get(key);
+      newDictionary.set(key, !value ? elem : (value + elem) / 2);
+    });
+  });
+
+  return newDictionary;
+};
+
+export const sortByRate = (dict) => {
+  const sortedEntries = Array.from(dict.entries()).sort((a, b) => b[1] - a[1]);
+  const sortedDict = new Map(sortedEntries);
+  return sortedDict;
+};

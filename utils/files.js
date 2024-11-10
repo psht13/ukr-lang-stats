@@ -46,3 +46,8 @@ export const generateMatrixes = (maps, paths) => {
     return generateBiGramFrequencyMatrixCSV(el, paths[i]);
   });
 };
+
+export const writeFiles = (filePaths, texts) => {
+  texts.forEach((el, i) => fs.writeFileSync(filePaths[i], el, "utf-8"));
+  return "Successfully wrote Ciphered files!\n";
+};
