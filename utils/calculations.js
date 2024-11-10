@@ -1,4 +1,4 @@
-export const calculateFrequencies = (texts) => {
+export const calcFrequencies = (texts) => {
   return texts.map((text) => {
     const frequencies = new Map();
     text.forEach((el) => {
@@ -19,7 +19,7 @@ export const calcRelativeFrequencies = (frequencies, lengths) => {
   });
 };
 
-export const calculateBiGrams = (texts) => {
+export const calcBiGrams = (texts) => {
   return texts.map((words) => {
     const biGrams = [];
     words.forEach((el) => {
@@ -30,6 +30,20 @@ export const calculateBiGrams = (texts) => {
       });
     });
     return biGrams;
+  });
+};
+
+export const calcTriGrams = (texts) => {
+  return texts.map((words) => {
+    const triGrams = [];
+    words.forEach((el) => {
+      el.split("").forEach((e, i) => {
+        if (i < el.length - 2) {
+          triGrams.push(el[i] + el[i + 1] + el[i + 2]);
+        }
+      });
+    });
+    return triGrams;
   });
 };
 

@@ -14,8 +14,7 @@ export const splitOnChars = (texts) => {
 
 export const removeSpaces = (texts) => {
   const spacelessTexts = texts.map((text) => text.filter((el) => el !== " "));
-  const lengths = spacelessTexts.map((text) => text.length);
-  return { spacelessTexts, lengths };
+  return spacelessTexts;
 };
 
 export const splitOnWords = (texts) => {

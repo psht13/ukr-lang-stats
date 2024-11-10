@@ -1,13 +1,13 @@
 {
   "name": "lab4",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Pavlo Yurchenko",
   "license": "ISC",
-  "description": ""
+  "description": "Code base for Lab4"
 }
