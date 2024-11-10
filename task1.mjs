@@ -1,14 +1,17 @@
-import { files, resultPaths } from "./file-paths/index.mjs";
+import { files, resultPaths } from "./constants/index.mjs";
 
 import {
-  calculateFrequencies,
   calcRelativeFrequencies,
+  calculateFrequencies,
+} from "./utils/calculations.mjs";
+
+import { readFiles, writeToCSVs } from "./utils/files.mjs";
+
+import {
   clearText,
-  readFiles,
   removeSpaces,
   splitOnChars,
-  writeToCSVs,
-} from "./utils.mjs";
+} from "./utils/text-manipulations.mjs";
 
 const plainTexts = readFiles(files);
 const clearedTexts = clearText(plainTexts);
@@ -17,4 +20,5 @@ const { spacelessTexts, lengths } = removeSpaces(splittedTexts);
 const frequencies = calculateFrequencies(spacelessTexts);
 const relativeFrequencies = calcRelativeFrequencies(frequencies, lengths);
 const result = writeToCSVs(relativeFrequencies, resultPaths);
+
 console.log(result);
