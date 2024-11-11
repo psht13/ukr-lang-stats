@@ -11,11 +11,27 @@ import {
   sortByRate,
 } from "./calculations.js";
 
-export const cipher = (a, b) => {
+export const cipher = ({ type, table, a, b }) => {
   const contents = readFiles(filesToCipher);
   const splittedTexts = splitOnChars(contents);
 
-  return splittedTexts.map((el) => {
+  if (type === "athenian") return cipherAthenian(splittedTexts, a, b);
+  return cipherTable(splittedTexts, table);
+};
+
+export const cipherTable = (texts, table) => {
+  return texts.map((el) => {
+    return el
+      .map((e) => {
+        if (table.get(e)) return table.get(e);
+        return e;
+      })
+      .join("");
+  });
+};
+
+export const cipherAthenian = (texts, a, b) => {
+  return texts.map((el) => {
     return el
       .map((e) => {
         if (alphabet.includes(e)) {

@@ -1,31 +1,55 @@
-import path from "node:path";
+import { createPaths, paths } from "../utils/files.js";
 
-export const createPaths = (dir, name, paths) =>
-  paths.reduce((ac, el, i) => {
-    ac.push(
-      // трохи trash-коду
-      path.resolve(
-        dir,
-        `${name ?? el.slice(el.lastIndexOf("/") + 1, el.lastIndexOf("."))}-${
-          name ? i + 1 : "ciphered"
-        }.${!name ? "txt" : "csv"}`
-      )
-    );
-    return ac;
-  }, []);
+export const cipherTable = new Map([
+  ["а", "ф"],
+  ["б", "ч"],
+  ["в", "ш"],
+  ["г", "м"],
+  ["ґ", "й"],
+  ["д", "е"],
+  ["е", "у"],
+  ["є", "ж"],
+  ["ж", "р"],
+  ["з", "і"],
+  ["и", "л"],
+  ["і", "з"],
+  ["ї", "п"],
+  ["й", "г"],
+  ["к", "я"],
+  ["л", "о"],
+  ["м", "н"],
+  ["н", "т"],
+  ["о", "ї"],
+  ["п", "к"],
+  ["р", "д"],
+  ["с", "х"],
+  ["т", "б"],
+  ["у", "ц"],
+  ["ф", "в"],
+  ["х", "є"],
+  ["ц", "а"],
+  ["ч", "и"],
+  ["ш", "с"],
+  ["щ", "ґ"],
+  ["ь", "ю"],
+  ["ю", "щ"],
+  ["я", " "],
+  [" ", "ь"],
+]);
 
 export const filesToCipher = [
-  path.resolve("texts", "faust-retell.txt"),
-  path.resolve("texts", "mur-part-one.txt"),
-  path.resolve("texts", "misto.txt"),
+  paths("texts", "faust-retell.txt"),
+  paths("texts", "mur-part-one.txt"),
+  paths("texts", "misto.txt"),
+  paths("texts", "random.txt"),
 ];
 
-export const cipheredFiles = [path.resolve("texts", "misto-ciphered.txt")];
+export const cipheredFiles = [paths("texts", "random-ciphered.txt")];
 
 export const files = [
-  path.resolve("texts", "faust-retell.txt"),
-  path.resolve("texts", "mur-part-one.txt"),
-  path.resolve("texts", "misto.txt"),
+  paths("texts", "faust-retell.txt"),
+  paths("texts", "mur-part-one.txt"),
+  paths("texts", "misto.txt"),
 ];
 
 export const resultPaths = createPaths("results", "alphabet", files);

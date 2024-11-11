@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import path from "node:path";
 
 export const alphabet = Array.from("абвгґдежзийіїклмнопрстуфхцчшщьюя ");
 
@@ -51,3 +52,18 @@ export const writeFiles = (filePaths, texts) => {
   texts.forEach((el, i) => fs.writeFileSync(filePaths[i], el, "utf-8"));
   return "Successfully wrote Ciphered files!\n";
 };
+
+export const createPaths = (dir, name, paths) =>
+  paths.reduce((ac, el, i) => {
+    ac.push(
+      path.resolve(
+        dir,
+        `${name ?? el.slice(el.lastIndexOf("/") + 1, el.lastIndexOf("."))}-${
+          name ? i + 1 : "ciphered"
+        }.${!name ? "txt" : "csv"}`
+      )
+    );
+    return ac;
+  }, []);
+
+export const paths = (...args) => path.resolve(...args);
