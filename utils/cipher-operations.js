@@ -7,6 +7,7 @@ import {
   calcRelativeFrequencies,
   calcTriGrams,
   lengths,
+  mergeDictionaries,
   sortByRate,
 } from "./calculations.js";
 
@@ -57,11 +58,37 @@ export const decipherService = ({ alp, bi, tri }) => {
     lensTri
   );
 
-  const sAlpFrequencies = relativeAlpFrequencies.map((el) => sortByRate(el));
-  const sBiFrequencies = relativeBiFrequencies.map((el) => sortByRate(el));
-  const sTriFrequencies = relativeTriFrequencies.map((el) => sortByRate(el));
+  const sAlpFrequencies = mergeDictionaries(
+    relativeAlpFrequencies.map((el) => sortByRate(el))
+  );
+  const sBiFrequencies = mergeDictionaries(
+    relativeBiFrequencies.map((el) => sortByRate(el))
+  );
+  const sTriFrequencies = mergeDictionaries(
+    relativeTriFrequencies.map((el) => sortByRate(el))
+  );
 
-  Array.from(dict.entries()).sort((a, b) => b[1] - a[1]);
+  const alpArr = toArray(sortedAlp);
+  const alpArrCip = toArray(sAlpFrequencies);
+  const biArr = toArray(sortedBi);
+  const biArrCip = toArray(sBiFrequencies);
+  const triArr = toArray(sortedTri);
+  const triArrCip = toArray(sTriFrequencies);
+
+  const mixedAlp = new Map([[["Normal Statistics"], ["Ciphered Statistics"]]]);
+  writeDicts(mixedAlp, alpArr, alpArrCip);
+  const mixedBi = new Map([[["Normal Statistics"], ["Ciphered Statistics"]]]);
+  writeDicts(mixedBi, biArr, biArrCip);
+  const mixedTri = new Map([[["Normal Statistics"], ["Ciphered Statistics"]]]);
+  writeDicts(mixedTri, triArr, triArrCip);
 
   return { mixedAlp, mixedBi, mixedTri };
 };
+
+const writeDicts = (mixed, bigger, lower) => {
+  bigger.forEach((el, i) =>
+    lower[i] ? mixed.set(el, lower[i]) : mixed.set(el, undefined)
+  );
+};
+
+const toArray = (dict) => Array.from(dict.entries());

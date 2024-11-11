@@ -9,7 +9,7 @@ export const clearText = (texts) => {
 };
 
 export const splitOnChars = (texts) => {
-  return texts.map((text) => text.split(""));
+  return texts.map((text) => text.toLowerCase().split(""));
 };
 
 export const removeSpaces = (texts) => {

@@ -1,6 +1,6 @@
 import fs from "node:fs";
 
-export const alphabet = Array.from("абвгґдежзийіїклмнопрстуфхцчшщьюя");
+export const alphabet = Array.from("абвгґдежзийіїклмнопрстуфхцчшщьюя ");
 
 export const readFiles = (filePaths) => {
   return filePaths.map((file) => fs.readFileSync(file, "utf8"));

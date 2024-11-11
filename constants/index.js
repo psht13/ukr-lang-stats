@@ -17,13 +17,15 @@ export const createPaths = (dir, name, paths) =>
 export const filesToCipher = [
   path.resolve("texts", "faust-retell.txt"),
   path.resolve("texts", "mur-part-one.txt"),
+  path.resolve("texts", "misto.txt"),
 ];
 
-export const cipheredFiles = [path.resolve("texts", "misto.txt")];
+export const cipheredFiles = [path.resolve("texts", "misto-ciphered.txt")];
 
 export const files = [
   path.resolve("texts", "faust-retell.txt"),
   path.resolve("texts", "mur-part-one.txt"),
+  path.resolve("texts", "misto.txt"),
 ];
 
 export const resultPaths = createPaths("results", "alphabet", files);
