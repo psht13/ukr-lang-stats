@@ -1,6 +1,6 @@
 {
-  "name": "lab4",
-  "version": "1.1.0",
+  "name": "ukr-lang-statistics",
+  "version": "1.1.1",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -9,5 +9,5 @@
   "keywords": [],
   "author": "Pavlo Yurchenko",
   "license": "ISC",
-  "description": "Code base for Lab4"
+  "description": "App that calculates frequency characteristics of ukrainian language."
 }
