@@ -1,12 +1,16 @@
 {
-  "name": "ukr-lang-statistics",
-  "version": "1.1.1",
+  "name": "ukr-lang-stats",
+  "version": "1.1.2",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node index.js"
   },
   "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psht13/ukr-lang-stats"
+  },
   "author": "Pavlo Yurchenko",
   "license": "ISC",
   "description": "App that calculates frequency characteristics of ukrainian language."
