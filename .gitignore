@@ -1,2 +1,5 @@
 /results/*
+/reports
+/node_modules
+
 !/results/.gitkeep
